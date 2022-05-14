@@ -18,6 +18,7 @@ class Cadastrar_livro(Bibliotecario):
         self.editora = editora
     
 ###################---------------CadastroLivroFechou--------------###############################    
+    def incluirNovoLivro(self):
         self.listafinal = [{'Livro' : self.livro, 'ISBN' : self.ISBN , 'Autor': self.autor, 'Edição' : self.edicao, 'Editora' : self.editora}]
         listadelivros.append(self.listafinal)
         return listadelivros
