@@ -19,8 +19,8 @@ if senha == 'Admin' and login == 'Admin':
                 24 - Excluir exemplar
             _____________________________________
             3 - Cadastrar Categoria
-                33 - Alterar Categoria
-                34 - Consultar Categoria
+                33 - Consultar Categoria
+                34 - Alterar Categoria 
                 35 - Excluir Categoria
             _____________________________________
             _____________________________________

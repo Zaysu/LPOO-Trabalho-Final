@@ -1,7 +1,7 @@
 
-listadelivros = [{'Livro' : 'Senhor Dos Aneis', 'Autor' : 'J.R.R. Tolkien', 'ISBN' : '123456789', 'Edicao' : '1', 'Editora' : 'DarkSide'}]
-listadeexemplares = [{'Nome' : 'Senhor Dos Aneis', 'Quantidade' : '2'}]
-listadeassuntos = [{'Assunto' : 'Aventura'}]
+listadelivros = [{'Livro' : 'Senhor Dos Aneis', 'Autor' : 'J.R.R. Tolkien', 'ISBN' : '123456789', 'Edicao' : '1', 'Editora' : 'DarkSide'},]
+listadeexemplares = [{'Nome' : 'Senhor Dos Aneis', 'Quantidade' : '2'},]
+listadeassuntos = [{'Assunto' : 'Aventura'},]
 
 
 class Bibliotecario:
@@ -19,7 +19,7 @@ class Cadastrar_livro(Bibliotecario):
     
 ###################---------------CadastroLivroFechou--------------###############################    
     def incluirNovoLivro(self):
-        self.listafinal = [{'Livro' : self.livro, 'ISBN' : self.ISBN , 'Autor': self.autor, 'Edição' : self.edicao, 'Editora' : self.editora}]
+        self.listafinal = {'Livro' : self.livro, 'ISBN' : self.ISBN , 'Autor': self.autor, 'Edição' : self.edicao, 'Editora' : self.editora}
         listadelivros.append(self.listafinal)
         return listadelivros
     
@@ -27,6 +27,7 @@ class Cadastrar_livro(Bibliotecario):
     def alterarLivro(self, nomePesquisa):
         self.nomePesquisa = nomePesquisa
         for x in listadelivros:
+            x = next(x for x in listadelivros if x['Livro'] == self.nomePesquisa)
             if x['Livro'] == self.nomePesquisa:
                 confirmaAlteracao = input("Deseja alterar o livro? (S/N) ")
                 if confirmaAlteracao == "S":
@@ -40,6 +41,7 @@ class Cadastrar_livro(Bibliotecario):
     def excluirLivro(self, nomeExcluir):
         self.nomeExcluir = nomeExcluir
         for x in listadelivros:
+            x = next(x for x in listadelivros if x['Livro'] == self.nomeExcluir)
             if x['Livro'] == self.nomeExcluir:
                 confirmeExluir = input("Deseja excluir o livro? (S/N) ")
                 if confirmeExluir == "S":
@@ -50,10 +52,11 @@ class Cadastrar_livro(Bibliotecario):
         else:
             return "Nenhum Livro não encontrado"
            
-########################## ''''''''FALTA''''' Consulta de Livros #########################
+########################## ''''''''''''' Consulta de Livros #########################
     def consultarLivros(self, NomeLivro):
         self.NomeLivro = NomeLivro
         for x in listadelivros:
+            x = next(x for x in listadelivros if x['Livro'] == self.NomeLivro)
             if x['Livro'] == self.NomeLivro:
                 return x
             else:
@@ -72,7 +75,7 @@ class Cadastrar_Exemplar(Bibliotecario):
         self.exemplar = nomeExemplar
         if (self.exemplar in listadelivros):
             #self.listafinal = [self.qtdeExemplar]
-            self.listafinal = [{'Nome' : self.exemplar , 'Quantidade' : self.qtdeExemplar}]
+            self.listafinal = {'Nome' : self.exemplar , 'Quantidade' : self.qtdeExemplar}
             listadeexemplares.append(self.listafinal)
             return listadeexemplares
         else:
@@ -82,6 +85,7 @@ class Cadastrar_Exemplar(Bibliotecario):
     def consultaExemplares(self, nomeExemplar):
         self.nomeExemplar = nomeExemplar
         for x in listadeexemplares: 
+            x = next(x for x in listadeexemplares if x['Nome'] == self.nomeExemplar)
             if x['Nome'] == self.nomeExemplar:
                 return x 
             else:
@@ -91,6 +95,7 @@ class Cadastrar_Exemplar(Bibliotecario):
     def excluirExemplares(self, nomeExemplarExcluir):
         self.nomeExemplarExcluir = nomeExemplarExcluir
         for x in listadeexemplares:
+            x = next( x for x in listadeexemplares if x['Nome'] == self.nomeExemplarExcluir)
             if x['Nome'] == self.nomeExemplarExcluir:
                 confirmarExcluir = input("Deseja excluir o exemplar? (S/N) ")
                 if confirmarExcluir == "S":
@@ -106,6 +111,7 @@ class Cadastrar_Exemplar(Bibliotecario):
     def alterarExemplares(self, nomeExemplarAlterar):
         self.nomeExemplarAlterar = nomeExemplarAlterar
         for x in listadeexemplares:
+            x = next(x for x in listadeexemplares if x['Nome'] == self.nomeExemplarAlterar)
             if x['Nome'] == self.nomeExemplarAlterar:
                 self.novoNomeExemplar = input("Digite o novo nome do exemplar: ")
                 x['Nome'] = self.novoNomeExemplar
@@ -123,10 +129,11 @@ class Cadastrar_assunto(Bibliotecario):
     
     def incluirNovoAssunto(self, nomeAssunto):
         self.nomeAssunto = nomeAssunto
-        for x in listadeassuntos:                 
+        for x in listadeassuntos:
+            x = next(x for x in listadeassuntos if x['Nome'] == self.nomeAssunto)                 
             confirmaAssunto = input("Deseja incluir o assunto? (S/N) ")
             if confirmaAssunto == "S":
-                self.listafinalassunto = [{'Assunto' : self.nomeAssunto}]
+                self.listafinalassunto = {'Assunto' : self.nomeAssunto}
                 listadeassuntos.append(self.listafinalassunto)
                 return listadeassuntos
             else:
@@ -136,6 +143,7 @@ class Cadastrar_assunto(Bibliotecario):
     def consultarAssunto(self, nomeAssunto):
         self.nomeAssunto = nomeAssunto
         for x in listadeassuntos:
+            x = next(x for x in listadeassuntos if x['Assunto'] == self.nomeAssunto)
             if x['Assunto'] == self.nomeAssunto:
                 return x
             else:
@@ -144,6 +152,7 @@ class Cadastrar_assunto(Bibliotecario):
     def excluirAssunto(self, nomeAssuntoExcluir):
         self.nomeAssuntoExcluir = nomeAssuntoExcluir
         for x in listadeassuntos:
+            x = next(x for x in listadeassuntos if x['Assunto'] == self.nomeAssuntoExcluir)
             if x['Assunto'] == self.nomeAssuntoExcluir:
                 confirmarExcluir = input("Deseja excluir o assunto? (S/N) ")
                 if confirmarExcluir == "S":
@@ -157,6 +166,7 @@ class Cadastrar_assunto(Bibliotecario):
     def alterarAssunto(self, nomeAssuntoAlterar):
         self.nomeAssuntoAlterar = nomeAssuntoAlterar
         for x in listadeassuntos:
+            x = next(x for x in listadeassuntos if x['Assunto'] == self.nomeAssuntoAlterar)
             if x['Assunto'] == self.nomeAssuntoAlterar:
                 self.novoNomeAssunto = input("Digite o novo nome do assunto: ")
                 x['Assunto'] = self.novoNomeAssunto
