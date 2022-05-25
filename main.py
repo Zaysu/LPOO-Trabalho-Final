@@ -1,4 +1,5 @@
 from bibliotecario import Bibliotecario, Cadastrar_livro, Cadastrar_Exemplar, Cadastrar_assunto
+from datetime import datetime
 
 login = input("Digite o login: ")
 senha = input("Digite a senha: ")
@@ -22,10 +23,14 @@ if senha == 'Admin' and login == 'Admin':
                 33 - Consultar Categoria
                 34 - Alterar Categoria 
                 35 - Excluir Categoria
-            _____________________________________
+            4 - Relatorios 
+                43 - Consultar Categoria
+                44 - Alterar Categoria 
+                45 - Excluir Categoria
+            _________________________________________
             _____________________________________
             5 - Sair
-            ''')
+            ''','')
         opcao = int(input('Digite o Numero da opção: '))
         
         # ------------------ Cadastrar Livro ------------------
@@ -44,18 +49,18 @@ if senha == 'Admin' and login == 'Admin':
         # ------------------- Alterar Livro -------------------
         if opcao == 11:
             pesquisaLivrvo = input("Digite o nome do livro para pesquisar: ")
-            livexemplo = Cadastrar_livro('', '', '', '', '', '')
+            livexemplo = Cadastrar_livro('', '', '', '', '', '','')
             print(f"{livexemplo.alterarLivro(pesquisaLivrvo)}")
             
         # ------------------- Excluir Livro -------------------
         if opcao == 12:
             excluindoLivro = input("Digite o nome do livro para excluir: ")
-            livexemplo = Cadastrar_livro('', '', '', '', '', '')
+            livexemplo = Cadastrar_livro('', '', '', '', '', '','')
             print(f"{livexemplo.excluirLivro(excluindoLivro)}")
         
         # ------------------- Consulta Livro ------------------- 
         if opcao == 13:
-            livexemplo2 = Cadastrar_livro('', '', '', '', '', '')
+            livexemplo2 = Cadastrar_livro('', '', '', '', '', '','')
             DigiteNomeLivro = input("Digite o nome do livro para consulta: ")
             print(f"Livro  {livexemplo2.consultarLivros(DigiteNomeLivro)}")
             
@@ -72,21 +77,21 @@ if senha == 'Admin' and login == 'Admin':
         # ------------------- Pesquisando Exemplar -------------------
         if opcao == 23:
             PesquisaExemplar = input("Digite o nome do livro para pesquisar: ")
-            buscaExemplar =  Cadastrar_Exemplar('', '')
+            buscaExemplar =  Cadastrar_Exemplar('', '','')
             buscaExemplar2 = buscaExemplar.consultaExemplares(PesquisaExemplar)
             print(f"{buscaExemplar2}")
             
         # ------------------- Alterar Exemplar -------------------
         if opcao == 22:
             PesquisaExemplar = input("Digite o nome do livro para Alteração: ")
-            AlteraExemplar23 =  Cadastrar_Exemplar('', '')
+            AlteraExemplar23 =  Cadastrar_Exemplar('', '','')
             print(f"{AlteraExemplar23.alterarExemplares(PesquisaExemplar)}")
             
             
         # ------------------- Excluir Exemplar -------------------    
         if opcao == 24:
             excluindoExemplar = input("Digite o nome do livro para excluir: ")
-            livexemplo4 = Cadastrar_Exemplar('', '')
+            livexemplo4 = Cadastrar_Exemplar('', '','')
             print(f"{livexemplo4.excluirExemplares(excluindoExemplar)}")
             
 
@@ -104,22 +109,35 @@ if senha == 'Admin' and login == 'Admin':
         # ------------------- Consultar Categoria -------------------
         if opcao == 33:
             pesqcateg = input("Digite o nome da categoria para pesquisar: ")
-            pescategoria = Cadastrar_assunto('', '')
+            pescategoria = Cadastrar_assunto('', '','')
             
             print(f"{pescategoria.consultarAssunto(pesqcateg)}")
                 
         # ------------------- Alterar Categoria -------------------
         if opcao == 34:
             pesquisaCategoria = input("Digite o nome da categoria para Alterar: ")
-            categoria = Cadastrar_assunto('', '')
+            categoria = Cadastrar_assunto('', '','')
             print(f"{categoria.alterarAssunto(pesquisaCategoria)}")
         
         # ------------------- Excluir Categoria -------------------
         if opcao == 35:
             excateCategoria = input("Digite o nome da categoria para excluir: ")
-            categoriaExcluir = Cadastrar_assunto('', '')
+            categoriaExcluir = Cadastrar_assunto('', '','')
             
             print(f"{categoriaExcluir.excluirAssunto(excateCategoria)}")
+        #__________________________________FECHOU Categorias ____________________________________________________________#
+
+       # ------------------ Cadastrar Categoria ------------------
+        if opcao == 4:
+            
+            PeriodoInicio = input("Digite a data inicial passada, ex:. 30/03/2022 ")
+            PeriodoFinal = input("Digite a data final , ex:. 30/04/2022 ")
+
+            livexemplo2 = Cadastrar_livro('', '', '', '', '', '','')
+            print(f"Livro  {livexemplo2.consultarLivrosPeriodo(PeriodoInicio,PeriodoFinal)}")
+           
+            
+
 
 else:
     print('Usuário ou senha incorretos')
