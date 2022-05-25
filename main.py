@@ -24,9 +24,7 @@ if senha == 'Admin' and login == 'Admin':
                 34 - Alterar Categoria 
                 35 - Excluir Categoria
             4 - Relatorios 
-                43 - Consultar Categoria
-                44 - Alterar Categoria 
-                45 - Excluir Categoria
+           
             _________________________________________
             _____________________________________
             5 - Sair
