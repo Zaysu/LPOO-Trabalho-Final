@@ -125,11 +125,11 @@ if senha == 'Admin' and login == 'Admin':
             print(f"{categoriaExcluir.excluirAssunto(excateCategoria)}")
         #__________________________________FECHOU Categorias ____________________________________________________________#
 
-       # ------------------ Cadastrar Categoria ------------------
+       # ------------------ Filtrar por periodo ------------------
         if opcao == 4:
             
-            PeriodoInicio = input("Digite a data inicial passada, ex:. 30/03/2022 ")
-            PeriodoFinal = input("Digite a data final , ex:. 30/04/2022 ")
+            PeriodoInicio = input("Digite o mes inicial passada, ex: jan ")
+            PeriodoFinal = input("Digite o mes final , ex:. mar ")
 
             livexemplo2 = Cadastrar_livro('', '', '', '', '', '','')
             print(f"Livro  {livexemplo2.consultarLivrosPeriodo(PeriodoInicio,PeriodoFinal)}")
