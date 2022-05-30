@@ -128,8 +128,8 @@ if senha == 'Admin' and login == 'Admin':
        # ------------------ Filtrar por periodo ------------------
         if opcao == 4:
             
-            PeriodoInicio = input("Digite o mes inicial passada, ex: jan ")
-            PeriodoFinal = input("Digite o mes final , ex:. mar ")
+            PeriodoInicio = input("Digite o mes inicial passada, ex: jan = 1 ")
+            PeriodoFinal = input("Digite o mes final , ex:. mar = 3 ")
 
             livexemplo2 = Cadastrar_livro('', '', '', '', '', '','')
             print(f"Livro  {livexemplo2.consultarLivrosPeriodo(PeriodoInicio,PeriodoFinal)}")
