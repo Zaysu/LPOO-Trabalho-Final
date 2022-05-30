@@ -21,6 +21,19 @@ class Cadastrar_livro(Bibliotecario):
         self.edicao = edicao
         self.editora = editora
         self.emprestimo = emprestimo
+     def get_livro(self):
+        return self.livro
+     def get_isbn(self):
+        return self.ISBN
+     def get_autor(self):
+        return self.autor
+     def get_edicao(self):
+        return self.edicao
+     def get_editora(self):
+        return self.editora
+     def get_emprestimo(self):
+        return self.emprestimo
+
     
 ###################---------------CadastroLivroFechou--------------###############################    
     def incluirNovoLivro(self):
