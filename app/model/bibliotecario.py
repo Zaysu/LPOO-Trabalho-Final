@@ -33,8 +33,10 @@ class Cadastrar_livro(Bibliotecario):
         return self.editora
      def get_emprestimo(self):
         return self.emprestimo
-
-    
+Lista = [
+Cadastrar_livro(nome='marcelo',livro='o livro', ISBN='2828', autor='marcelo', edicao='1998', editora='atlanta', emprestimo='27/03/2022',
+Cadastrar_livro(nome='marcelo2',livro='o livro2', ISBN='2828', autor='marcelo', edicao='1998', editora='atlanta', emprestimo='27/03/2022'
+]
 ###################---------------CadastroLivroFechou--------------###############################    
     def incluirNovoLivro(self):
         self.listafinal = {'Livro' : self.livro, 'ISBN' : self.ISBN , 'Autor': self.autor, 'Edição' : self.edicao, 'Editora' : self.editora}
