@@ -1,4 +1,4 @@
-from bibliotecario import Bibliotecario, Cadastrar_livro, Cadastrar_Exemplar, Cadastrar_assunto
+from app.model.bibliotecario import Bibliotecario, Cadastrar_livro, Cadastrar_Exemplar, Cadastrar_assunto
 from datetime import datetime
 
 login = input("Digite o login: ")
