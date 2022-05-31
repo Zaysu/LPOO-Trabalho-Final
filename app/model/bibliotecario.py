@@ -2,8 +2,8 @@
 from datetime import *
 from app.model.acervo import listadelivros, listadeexemplares, listadeassuntos
 
-'''listadelivros = [{'Livro' : 'Senhor Dos Aneis', 'Autor' : 'J.R.R. Tolkien', 'ISBN' : '123456789', 'Edicao' : '1', 'Editora' : 'DarkSide','Emprestimo':'27/04/2022'},]
-#listadelivros = [{'Livro' : 'Senhor', 'Autor' : 'J.R.R. Tolkien', 'ISBN' : '123456789', 'Edicao' : '1', 'Editora' : 'Side','Emprestimo':'27/03/2022'},]
+'''listadelivros = [{'Livro' : 'Senhor Dos Aneis', 'Autor' : 'J.R.R. Tolkien', 'ISBN' : '123456789', 'Edicao' : '1', 'Editora' : 'DarkSide','Emprestimo':'1'},]
+#listadelivros = [{'Livro' : 'Senhor', 'Autor' : 'J.R.R. Tolkien', 'ISBN' : '123456789', 'Edicao' : '1', 'Editora' : 'Side','Emprestimo':'4'},]
 listadeexemplares = [{'Nome' : 'Senhor Dos Aneis', 'Quantidade' : '2'},]
 listadeassuntos = [{'Assunto' : 'Aventura'},]'''
 
@@ -21,7 +21,22 @@ class Cadastrar_livro(Bibliotecario):
         self.edicao = edicao
         self.editora = editora
         self.emprestimo = emprestimo
-    
+     def get_livro(self):
+        return self.livro
+     def get_isbn(self):
+        return self.ISBN
+     def get_autor(self):
+        return self.autor
+     def get_edicao(self):
+        return self.edicao
+     def get_editora(self):
+        return self.editora
+     def get_emprestimo(self):
+        return self.emprestimo
+Lista = [
+Cadastrar_livro(nome='marcelo',livro='o livro', ISBN='2828', autor='marcelo', edicao='1998', editora='atlanta', emprestimo='27/03/2022',
+Cadastrar_livro(nome='marcelo2',livro='o livro2', ISBN='2828', autor='marcelo', edicao='1998', editora='atlanta', emprestimo='27/03/2022'
+]
 ###################---------------CadastroLivroFechou--------------###############################    
     def incluirNovoLivro(self):
         self.listafinal = {'Livro' : self.livro, 'ISBN' : self.ISBN , 'Autor': self.autor, 'Edição' : self.edicao, 'Editora' : self.editora}
@@ -67,26 +82,14 @@ class Cadastrar_livro(Bibliotecario):
             else:
                 return "Nenhum Livro não encontrado"
     def consultarLivrosPeriodo(self, PeriodoInicio,PeriodoFinal):
-        self.periodo = PeriodoInicio
-        self.periodo = PeriodoFinal
-
-        for lista in listadelivros:
-            data_emprestimo = lista['Emprestimo']
-            #data_fim = data_emprestimo.split("/'][,")
-            data_fim = date(data_emprestimo)
-            #print(data_fim,'\n')
-            dia1, mes1, ano1 = [int(x) for x in PeriodoInicio.split('/')] 
-            inicio_periodo = date(ano1, mes1, dia1) 
-            #print(inicio_periodo,'\n')
-            dia2, mes2, ano2 = [int(x) for x in PeriodoFinal.split('/')] 
-            fim_periodo = date(ano2, mes2, dia2) 
-            #print(fim_periodo,'\n')
-            if data_fim <= inicio_periodo:
-               print('ok')
-            elif data_fim >= fim_periodo:
-                print('ok2')
-            else:
-                return "Nenhum Livro não encontrado"
+        self.periodo_inicio = PeriodoInicio
+        self.periodo_fim = PeriodoFinal
+        for x in listadelivros:
+           if x['emprestimo'] <=  self.periodo_inicio and x['emprestimo'] >= self.periodo_fim:
+               return x
+           else:
+               return "Nenhum Livro não encontrado"
+      
 
 ############# Cadastrando EXEMPLAR  ###############                 
 class Cadastrar_Exemplar(Bibliotecario):
