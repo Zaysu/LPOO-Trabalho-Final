@@ -1,4 +1,5 @@
 from app.model.bibliotecario import Bibliotecario, Cadastrar_livro, Cadastrar_Exemplar, Cadastrar_assunto
+from app.model.emprestimos import Emprestimo
 from datetime import datetime
 
 login = input("Digite o login: ")
@@ -23,7 +24,8 @@ if senha == 'Admin' and login == 'Admin':
                 33 - Consultar Categoria
                 34 - Alterar Categoria 
                 35 - Excluir Categoria
-            4 - Relatorios 
+            4 - Relatorios
+                41 - Emprestimos de Livros
            
             _________________________________________
             _____________________________________
@@ -134,7 +136,12 @@ if senha == 'Admin' and login == 'Admin':
             livexemplo2 = Cadastrar_livro('', '', '', '', '', '','')
             print(f"Livro  {livexemplo2.consultarLivrosPeriodo(PeriodoInicio,PeriodoFinal)}")
            
-            
+        # ------------------- Cadastrando Emprestimo -------------------
+        
+        if opcao == 44:
+            livroEmprestimo = input("Digite o nome do livro para emprestimo: ")
+            livroEmprestimo2 = Emprestimo(livroEmprestimo)
+            print(f"{livroEmprestimo2.cadastrarEmprestimo(livroEmprestimo)}")
 
 
 else:
