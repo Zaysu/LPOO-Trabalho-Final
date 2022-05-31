@@ -24,8 +24,11 @@ if senha == 'Admin' and login == 'Admin':
                 33 - Consultar Categoria
                 34 - Alterar Categoria 
                 35 - Excluir Categoria
-            4 - Relatorios
+            4 - Periodo Emprestimo
                 41 - Emprestimos de Livros
+                42 - Livros emprestados
+                43 - Cancelar Emprestimo
+                44 - Pesquisar por data
            
             _________________________________________
             _____________________________________
@@ -126,23 +129,30 @@ if senha == 'Admin' and login == 'Admin':
             
             print(f"{categoriaExcluir.excluirAssunto(excateCategoria)}")
         #__________________________________FECHOU Categorias ____________________________________________________________#
-
-       # ------------------ Filtrar por periodo ------------------
-        if opcao == 4:
-            
-            PeriodoInicio = input("Digite o mes inicial passada, ex: jan = 1 ")
-            PeriodoFinal = input("Digite o mes final , ex:. mar = 3 ")
-
-            livexemplo2 = Cadastrar_livro('', '', '', '', '', '','')
-            print(f"Livro  {livexemplo2.consultarLivrosPeriodo(PeriodoInicio,PeriodoFinal)}")
-           
+  
         # ------------------- Cadastrando Emprestimo -------------------
         
-        if opcao == 44:
+        if opcao == 4: 
+            nomeLivro = input("Digite o nome do livro: ")
+            datainical = input("Digite a data inicial do emprestimo: ")
+            datafinal = input("Digite a data final do emprestimo: ")
+            livroEmprestimo4 = Emprestimo(nomeLivro)
+            print(f"{livroEmprestimo4.gerarRelatorio(datainical, datafinal)}")
+        
+        if opcao == 41:
             livroEmprestimo = input("Digite o nome do livro para emprestimo: ")
             livroEmprestimo2 = Emprestimo(livroEmprestimo)
             print(f"{livroEmprestimo2.cadastrarEmprestimo(livroEmprestimo)}")
-
+            
+        if opcao == 43:
+            dataCancelamento = input("Digite nome do livro para cancelar emprestimo: ")
+            livroEmprestimo43 = Emprestimo('')
+            print(f"{livroEmprestimo43.cancelarEmprestimo(dataCancelamento)}")
+               
+        if opcao == 44:
+            dataPesquisa = input("Digite a data para pesquisa: ")
+            dataEmprestimo = Emprestimo('')
+            print(f"{dataEmprestimo.pesquisarData(dataPesquisa)}")
 
 else:
     print('Usuário ou senha incorretos')

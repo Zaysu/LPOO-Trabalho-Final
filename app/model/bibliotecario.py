@@ -2,12 +2,6 @@
 from datetime import *
 from app.model.acervo import listadelivros, listadeexemplares, listadeassuntos
 
-'''listadelivros = [{'Livro' : 'Senhor Dos Aneis', 'Autor' : 'J.R.R. Tolkien', 'ISBN' : '123456789', 'Edicao' : '1', 'Editora' : 'DarkSide','Emprestimo':'1'},]
-#listadelivros = [{'Livro' : 'Senhor', 'Autor' : 'J.R.R. Tolkien', 'ISBN' : '123456789', 'Edicao' : '1', 'Editora' : 'Side','Emprestimo':'4'},]
-listadeexemplares = [{'Nome' : 'Senhor Dos Aneis', 'Quantidade' : '2'},]
-listadeassuntos = [{'Assunto' : 'Aventura'},]'''
-
-
 class Bibliotecario:
     def __init__(self, nome):
         self.nome = nome
@@ -21,22 +15,20 @@ class Cadastrar_livro(Bibliotecario):
         self.edicao = edicao
         self.editora = editora
         self.emprestimo = emprestimo
-     def get_livro(self):
+        
+    def get_livro(self):
         return self.livro
-     def get_isbn(self):
+    def get_isbn(self):
         return self.ISBN
-     def get_autor(self):
+    def get_autor(self):
         return self.autor
-     def get_edicao(self):
+    def get_edicao(self):
         return self.edicao
-     def get_editora(self):
+    def get_editora(self):
         return self.editora
-     def get_emprestimo(self):
+    def get_emprestimo(self):
         return self.emprestimo
-Lista = [
-Cadastrar_livro(nome='marcelo',livro='o livro', ISBN='2828', autor='marcelo', edicao='1998', editora='atlanta', emprestimo='27/03/2022',
-Cadastrar_livro(nome='marcelo2',livro='o livro2', ISBN='2828', autor='marcelo', edicao='1998', editora='atlanta', emprestimo='27/03/2022'
-]
+
 ###################---------------CadastroLivroFechou--------------###############################    
     def incluirNovoLivro(self):
         self.listafinal = {'Livro' : self.livro, 'ISBN' : self.ISBN , 'Autor': self.autor, 'Edição' : self.edicao, 'Editora' : self.editora}
@@ -81,14 +73,14 @@ Cadastrar_livro(nome='marcelo2',livro='o livro2', ISBN='2828', autor='marcelo', 
                 return x
             else:
                 return "Nenhum Livro não encontrado"
-    def consultarLivrosPeriodo(self, PeriodoInicio,PeriodoFinal):
+'''    def consultarLivrosPeriodo(self, PeriodoInicio,PeriodoFinal):
         self.periodo_inicio = PeriodoInicio
         self.periodo_fim = PeriodoFinal
         for x in listadelivros:
            if x['emprestimo'] <=  self.periodo_inicio and x['emprestimo'] >= self.periodo_fim:
                return x
            else:
-               return "Nenhum Livro não encontrado"
+               return "Nenhum Livro não encontrado"'''
       
 
 ############# Cadastrando EXEMPLAR  ###############                 
