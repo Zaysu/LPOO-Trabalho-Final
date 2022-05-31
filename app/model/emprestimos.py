@@ -1,5 +1,6 @@
 from app.model.acervo import listadelivros, listadeexemplares, listadeassuntos
 from app.model.bibliotecario import Bibliotecario
+from datetime import date, datetime
 
 
 class Emprestimo(Bibliotecario):
@@ -32,16 +33,23 @@ class Emprestimo(Bibliotecario):
             else:
                 return "Livro não encontrado"
                 
-    def gerarRelatorio(self, dataInicial, dataFinal):
+    def gerarRelatorio(self, Nomelivro, dataInicial, dataFinal):
+        self.Nomelivro = Nomelivro
         self.dataInicial = dataInicial
         self.dataFinal = dataFinal
         for x in listadelivros:
-            x = next(x for x in listadelivros if x['Emprestimo'] == self.dataInicial)
-            if x['Emprestimo'] == self.dataInicial:
-                return listadelivros
+            x = next(x for x in listadelivros if x['Livro'] == self.Nomelivro)
+            if x['Livro'] == self.Nomelivro:
+                self.dataInicial = datetime.strptime(self.dataInicial, '%Y-%m-%d ')
+                self.dataFinal = datetime.strptime(self.dataFinal, '%Y-%m-%d')
+                if self.dataInicial <= x['Emprestimo'] <= self.dataFinal:
+                #if x['Emprestimo'] <= self.dataInicial.strftime("%Y-%m-%d") and x['Emprestimo'] >= self.dataFinal.strftime("%Y-%m-%d"):
+                    return listadelivros
+                else:
+                    return "Nenhum livro cadastrado nesse periodo"
             else:
-                return "Nenhum livro cadastrado nesse periodo"
-
+                return "Livro não encontrado"
+            
     def cancelarEmprestimo(self, nomePesquisa):
         self.nomePesquisa = nomePesquisa
         for x in listadelivros:

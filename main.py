@@ -24,6 +24,7 @@ if senha == 'Admin' and login == 'Admin':
                 33 - Consultar Categoria
                 34 - Alterar Categoria 
                 35 - Excluir Categoria
+            _____________________________________
             4 - Periodo Emprestimo
                 41 - Emprestimos de Livros
                 42 - Livros emprestados
@@ -136,8 +137,8 @@ if senha == 'Admin' and login == 'Admin':
             nomeLivro = input("Digite o nome do livro: ")
             datainical = input("Digite a data inicial do emprestimo: ")
             datafinal = input("Digite a data final do emprestimo: ")
-            livroEmprestimo4 = Emprestimo(nomeLivro)
-            print(f"{livroEmprestimo4.gerarRelatorio(datainical, datafinal)}")
+            livroEmprestimo4 = Emprestimo('')
+            print(f"{livroEmprestimo4.gerarRelatorio(nomeLivro, datainical, datafinal)}")
         
         if opcao == 41:
             livroEmprestimo = input("Digite o nome do livro para emprestimo: ")
