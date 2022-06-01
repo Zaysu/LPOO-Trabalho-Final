@@ -1,4 +1,5 @@
-from app.model.acervo import listadelivros, listadeexemplares, listadeassuntos
+from ast import Break
+from app.model.acervo import listadelivros, listadeexemplares, listadeassuntos, usuarios
 from app.model.bibliotecario import Bibliotecario
 from datetime import date, datetime
 
@@ -17,6 +18,8 @@ class Emprestimo(Bibliotecario):
                 if confirmaEmprestimo == "S":
                     self.emprestimo = input("Digite a data de emprestimo: EX: 27/04/2022 ")
                     x['Emprestimo'] = self.emprestimo
+                    User = input("Quem Deseja Alugar?: ")
+                    x['Usuario'] = User
                     return listadelivros
                 else:
                     return "Livro não emprestado"
@@ -64,3 +67,13 @@ class Emprestimo(Bibliotecario):
                     return "Livro não cancelado"
             else:
                 return "Livro não encontrado"
+        
+    def verificaUsuario(self, login, senha):
+        self.login = login
+        self.senha = senha
+        for x in usuarios:
+            x = next(x for x in usuarios if x['Nome'] == self.login)
+            if x['Nome'] == self.login and x['Senha'] == self.senha:
+                return "Usuario logado"
+            else:
+                return Break 

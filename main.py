@@ -1,39 +1,60 @@
 from app.model.bibliotecario import Bibliotecario, Cadastrar_livro, Cadastrar_Exemplar, Cadastrar_assunto
 from app.model.emprestimos import Emprestimo
-from datetime import datetime
+from app.model.user import Usuario
 
-login = input("Digite o login: ")
-senha = input("Digite a senha: ")
 
-if senha == 'Admin' and login == 'Admin':
+login = input("Senha para execultar o sistema: ")
+
+if login == 'Admin':
     opcao = 0
-    while opcao != 5:
+    while opcao != 6:
+        login = input("Digite o login: ")
+        senha = input("Digite a senha: ")
+        conferelogin = Emprestimo('')
+        print(f"{conferelogin.verificaUsuario(login, senha)}")
         print('''Opções:
-            _____________________________________
+            ________________LIVROS______________________
             1 - Cadastrar livro
                 11 - Alterar livro
                 12 - Excluir livro
                 13 - Consultar Livros
-            _____________________________________
+             ___________________________________________
+                 
+            ________________EXEMPLARES__________________
             2 - Cadastrar exemplar
                 22 - Alterar exemplar
                 23 - Consultar exemplares
                 24 - Excluir exemplar
-            _____________________________________
+            _____________________________________________
+                 
+            ____________CATEGORIAS_______________________
             3 - Cadastrar Categoria
                 33 - Consultar Categoria
                 34 - Alterar Categoria 
                 35 - Excluir Categoria
-            _____________________________________
+            _____________________________________________
+                 
+            ______________EMPRESTIMOS_____________________
             4 - Periodo Emprestimo
                 41 - Emprestimos de Livros
                 42 - Livros emprestados
                 43 - Cancelar Emprestimo
                 44 - Pesquisar por data
+            _____________________________________________
+                 
+            _______________RELATORIO______________________
+            5 - Gerar Relatorio
+                51 - Livros Emprestados
+                52 - Livros Reservados
+                53 - Todos Usuarios
+                54 - Livros com 
+                
+           _______________RELATORIO______________________ 
+            7 - Registrar Usuario
            
-            _________________________________________
-            _____________________________________
-            5 - Sair
+           ______________________________________________
+           ______________________________________________
+            6 - SAIR
             ''','')
         opcao = int(input('Digite o Numero da opção: '))
         
@@ -98,8 +119,6 @@ if senha == 'Admin' and login == 'Admin':
             livexemplo4 = Cadastrar_Exemplar('', '','')
             print(f"{livexemplo4.excluirExemplares(excluindoExemplar)}")
             
-
-
     #__________________________________FECHOU Exemplar ____________________________________________________________#
 
 
@@ -154,6 +173,13 @@ if senha == 'Admin' and login == 'Admin':
             dataPesquisa = input("Digite a data para pesquisa: ")
             dataEmprestimo = Emprestimo('')
             print(f"{dataEmprestimo.pesquisarData(dataPesquisa)}")
-
+            
+        if opcao == 7:
+            cadUsuario = input("Digite o nome do usuario: ")
+            cadSenha = input("Digite a senha do usuario: ")
+            cadTipo = input("Digite o tipo de usuario: ")
+            cadastroUsuario = Usuario(cadUsuario, cadSenha, cadTipo)
+            print(f"{cadastroUsuario.cadUser()}")
 else:
-    print('Usuário ou senha incorretos')
+    print('Verificação Inválida')
+
