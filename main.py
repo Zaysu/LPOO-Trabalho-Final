@@ -1,7 +1,7 @@
 from app.model.bibliotecario import Bibliotecario, Cadastrar_livro, Cadastrar_Exemplar, Cadastrar_assunto
 from app.model.emprestimos import Emprestimo
 from app.model.user import Usuario
-
+from app.model.relatorios import GerarRelatorio
 
 login = input("Senha para execultar o sistema: ")
 
@@ -43,15 +43,15 @@ if login == 'Admin':
             _____________________________________________
                  
             _______________RELATORIO______________________
-            5 - Gerar Relatorio
-                51 - Livros Emprestados
-                52 - Livros Reservados
-                53 - Todos Usuarios
-                54 - Livros com 
-                
+            5 - Relatorio
+                51 -  Emprestados
+                52 -  Reservados
+                53 -  Atraso
+                54 -  Todos Livros
+ 
            _______________RELATORIO______________________ 
             7 - Registrar Usuario
-           
+                777 - Todos Usuarios
            ______________________________________________
            ______________________________________________
             6 - SAIR
@@ -180,6 +180,32 @@ if login == 'Admin':
             cadTipo = input("Digite o tipo de usuario: ")
             cadastroUsuario = Usuario(cadUsuario, cadSenha, cadTipo)
             print(f"{cadastroUsuario.cadUser()}")
+            
+            
+            
+            
+        #_________________________________-relatorios____________________________________________________________#
+        
+        if opcao == 51:
+            LivrosEmprestados = GerarRelatorio()
+            print(f"Livros Emprestados: {LivrosEmprestados.todosLivrosEmprestados()}")
+
+        if opcao == 52:
+            LivrosReservado = GerarRelatorio()
+            print(f"{LivrosReservado.todosLivrosReservados()}")
+            
+        if opcao == 53:
+            LivroEmAtraso = GerarRelatorio()
+            print(f"{LivroEmAtraso.emAtraso()}")
+                
+        if opcao == 54:
+            TodosLivros = GerarRelatorio()
+            print(f"{TodosLivros.TodosExemplares()}")
+        
+        if opcao == 777:
+            TodosUsers = GerarRelatorio()
+            print(f'{TodosUsers.TodosUsuarios()}')
+        
 else:
     print('Verificação Inválida')
 

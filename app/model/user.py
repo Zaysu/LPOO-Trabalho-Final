@@ -20,6 +20,10 @@ class Usuario:
         usuarios.append(self.listafinal)
         return usuarios
     
+    def ListarUsuarios(self):
+        return usuarios
+    
+    
     '''for x in usuarios:
             x = next(x for x in usuarios if x['Nome'] == self.nome)
             if x['Nome'] == self.nome:
