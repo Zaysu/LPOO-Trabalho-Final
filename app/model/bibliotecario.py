@@ -31,7 +31,7 @@ class Cadastrar_livro(Bibliotecario):
 
 ###################---------------CadastroLivroFechou--------------###############################    
     def incluirNovoLivro(self):
-        self.listafinal = {'Livro' : self.livro, 'ISBN' : self.ISBN , 'Autor': self.autor, 'Edição' : self.edicao, 'Editora' : self.editora, 'Emprestimo' : ' ', 'Usuario' : ' ',  }
+        self.listafinal = {'Livro' : self.livro, 'ISBN' : self.ISBN , 'Autor': self.autor, 'Edição' : self.edicao, 'Editora' : self.editora, 'Emprestimo' : self.emprestimo, 'Usuario' : ' ',  }
         listadelivros.append(self.listafinal)
         return listadelivros
     
@@ -94,11 +94,12 @@ class Cadastrar_Exemplar(Bibliotecario):
     def incluirNovoExemplar(self, nomeExemplar, qtdExemplar):
         self.qtdeExemplar = qtdExemplar
         self.exemplar = nomeExemplar
-        if (self.exemplar in listadelivros):
-            #self.listafinal = [self.qtdeExemplar]
-            self.listafinal = {'Nome' : self.exemplar , 'Quantidade' : self.qtdeExemplar}
-            listadeexemplares.append(self.listafinal)
-            return listadeexemplares
+        for x in listadelivros:
+            x = next(x for x in listadelivros if x['Livro'] == self.exemplar)
+            if x['Livro'] == self.exemplar:
+                self.listafinal = {'Livro' : self.exemplar, 'Exemplar' : self.qtdeExemplar, 'Usuario' : ' '}
+                listadeexemplares.append(self.listafinal)
+                return listadeexemplares
         else:
             return "Livro não encontrado"
         

@@ -66,8 +66,9 @@ if login == 'Admin':
             autorMain = input("Digite o autor do livro: ")
             edicaoMain = input("Digite a edicao do livro: ")
             editoraMain = input("Digite a editora do livro: ")
+            emprestimomain = input("Numero de emprestimo: ")
 
-            livro = Cadastrar_livro(nomeMain, livroMain, ISBNMain, autorMain, edicaoMain, editoraMain)
+            livro = Cadastrar_livro(nomeMain, livroMain, ISBNMain, autorMain, edicaoMain, editoraMain, emprestimomain)
 
             print(f"Livro Cadastrado {livro.incluirNovoLivro()}")
             
@@ -181,9 +182,7 @@ if login == 'Admin':
             cadastroUsuario = Usuario(cadUsuario, cadSenha, cadTipo)
             print(f"{cadastroUsuario.cadUser()}")
             
-            
-            
-            
+                 
         #_________________________________-relatorios____________________________________________________________#
         
         if opcao == 51:
